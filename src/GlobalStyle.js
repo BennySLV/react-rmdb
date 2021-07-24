@@ -8,14 +8,14 @@ export const GlobalStyle = createGlobalStyle`
 		--mediumGrey: #353535;
 		--darkGrey: #1c1c1c;
 		--fontSuperLarge: 2.5rem;
-		--fontLarge: 1.5rem
-		--fontMedium: 1.2rem
-		--fontSmall: 1rem
+		--fontLarge: 1.5rem;
+		--fontMedium: 1.2rem;
+		--fontSmall: 1rem;
 	}
 
 	* {
 		box-sizing: border-box;
-		font-family: "Abel", sans-serif
+		font-family: "Abel", sans-serif;
 	}
 
 	body {
@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 		h1 {
 			font-size: 2rem;
 			font-weight: 600;
-			color: var(--white)
+			color: var(--white);
 		}
 
 		h3 {
