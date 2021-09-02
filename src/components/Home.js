@@ -6,20 +6,22 @@ import HeroImage from "./HeroImage";
 import Grid from "./Grid";
 import Thumbnail from "./Thumbnail";
 import LoadingSpinner from "./LoadingSpinner";
+import SearchBar from "./SearchBar";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
 const Home = () => {
-	const { state, loading, error } = useHomeFetch();
+	const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
 	return (
 		<React.Fragment>
-			{state.results[0] ? (
+			{!searchTerm && state.results[0] ? (
 				<HeroImage
 					image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
 					title={state.results[0].original_title}
 					text={state.results[0].overview}
 				/>
 			) : null}
-			<Grid header="Popular Movies">
+			<SearchBar setSearchTerm={setSearchTerm} />
+			<Grid header={searchTerm ? "Search result" : "Popular Movies"}>
 				{state.results.map((movie) => (
 					<Thumbnail
 						key={movie.id}
