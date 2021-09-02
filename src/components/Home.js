@@ -7,6 +7,7 @@ import Grid from "./Grid";
 import Thumbnail from "./Thumbnail";
 import LoadingSpinner from "./LoadingSpinner";
 import SearchBar from "./SearchBar";
+import Button from "./Button";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
 const Home = () => {
@@ -37,7 +38,10 @@ const Home = () => {
 					/>
 				))}
 			</Grid>
-			<LoadingSpinner />
+			{loading && <LoadingSpinner />}
+			{state.page < state.total_pages && !loading && (
+				<Button text="Load More" />
+			)}
 		</React.Fragment>
 	);
 };
