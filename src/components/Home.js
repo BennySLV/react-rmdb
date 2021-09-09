@@ -1,5 +1,4 @@
 import React from "react";
-import API from "../API";
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 import NoImage from "../images/no_image.jpg";
 import HeroImage from "./HeroImage";
@@ -7,11 +6,23 @@ import Grid from "./Grid";
 import Thumbnail from "./Thumbnail";
 import LoadingSpinner from "./LoadingSpinner";
 import SearchBar from "./SearchBar";
-import Button from "./Button";
+import LoadMoreButton from "./LoadMoreButton";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
 const Home = () => {
-	const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
+	const {
+		state,
+		loading,
+		error,
+		searchTerm,
+		setSearchTerm,
+		setIsLoadingMore,
+	} = useHomeFetch();
+
+	console.log(state);
+
+	if (error) return <div>Something went wrong...</div>;
+
 	return (
 		<React.Fragment>
 			{!searchTerm && state.results[0] ? (
@@ -40,7 +51,10 @@ const Home = () => {
 			</Grid>
 			{loading && <LoadingSpinner />}
 			{state.page < state.total_pages && !loading && (
-				<Button text="Load More" />
+				<LoadMoreButton
+					text="Load More"
+					callback={() => setIsLoadingMore(true)}
+				/>
 			)}
 		</React.Fragment>
 	);
