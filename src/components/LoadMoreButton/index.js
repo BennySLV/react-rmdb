@@ -2,10 +2,10 @@ import React from "react";
 
 import { Wrapper } from "./LoadMoreButton.styles";
 
-const Button = ({ text, callback }) => (
-	<Wrapper type="button" onclick={callback}>
+const LoadMoreButton = ({ text, callback }) => (
+	<Wrapper type="button" onClick={callback}>
 		{text}
 	</Wrapper>
 );
 
-export default Button;
+export default LoadMoreButton;
