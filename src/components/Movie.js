@@ -4,6 +4,7 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 import BreadCrumb from "./BreadCrumb";
 import Grid from "./Grid";
 import LoadingSpinner from "./LoadingSpinner";
+import MovieInfo from "./MovieInfo";
 import NoImage from "../images/no_image.jpg";
 import { useMovieFetch } from "../hooks/useMovieFetch";
 
@@ -15,6 +16,7 @@ const Movie = () => {
 	return (
 		<React.Fragment>
 			<BreadCrumb movieTitle={movie.original_title} />
+			<MovieInfo movie={movie} />
 		</React.Fragment>
 	);
 };
