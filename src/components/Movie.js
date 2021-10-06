@@ -6,6 +6,7 @@ import Grid from "./Grid";
 import LoadingSpinner from "./LoadingSpinner";
 import MovieInfo from "./MovieInfo";
 import MovieInfoBar from "./MovieInfoBar";
+import Actor from "./Actor";
 import NoImage from "../images/no_image.jpg";
 import { useMovieFetch } from "../hooks/useMovieFetch";
 
@@ -23,6 +24,20 @@ const Movie = () => {
 				budget={movie.budget}
 				revenue={movie.revenue}
 			/>
+			<Grid header="Actors">
+				{movie.actors.map((actor) => (
+					<Actor
+						key={actor.credit_id}
+						name={actor.name}
+						character={actor.character}
+						imageUrl={
+							actor.profile_path
+								? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+								: NoImage
+						}
+					/>
+				))}
+			</Grid>
 		</React.Fragment>
 	);
 };
